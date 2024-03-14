@@ -1,47 +1,64 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import userData from './user.json';
+import userData from './userData.json';
 
 function Homepage() {
-    
+  const [uData, setUserData] = useState(null);
+
+  useEffect(() => {
+    setUserData(userData);
+  }, []);
+
+  const [imagenSeleccionada, setImagenSeleccionada] = useState(null);
+
   return (
+    <div class="background">
       <Container>
-        <Container>
-          <Row>
-            <Col>
-              <img class="imagen-perfil" src="https://picsum.photos/200/300?random=1" />
+        <Container style={{ marginBottom: '24px' }}>
+          <Row className="align-items-center">
+            <Col xs="auto">
+              <img className="imagen-perfil" src="https://picsum.photos/200/300?random=1" alt="Profile" />
             </Col>
             <Col>
-              <p><strong>UserName:</strong> {userData.username}</p>
-              <p><strong>FullName:</strong> {userData.name}</p>
-              <p><strong>Description:</strong> {userData.description}</p>
-              <p><strong>Url:</strong> {userData.url}</p>
-              <p><strong>followers:</strong> {userData.followers}</p>
-              <p><strong>following:</strong> {userData.following}</p>
-              <p><strong>post:</strong> {userData.post}</p>
+              <div>
+                {uData ? (
+                  <div>
+                    <p className="mb-0 usuario"><strong>{uData[0].user}</strong></p>
+                    <p className="mb-0"><strong>{uData[0].fullName}</strong></p>
+                    <p className="mb-0">{uData[0].description}</p>
+                    <p className="mb-0"><strong>URL:</strong> <a href={uData[0].url}>{uData[0].url}</a></p>
+                    <p className="mb-0"><strong>{uData[0].posts}</strong> POSTS - <strong>{uData[0].followers}</strong> FOLLOWERS - <strong>{uData[0].following}</strong> FOLLOWING</p>
+                  </div>
+                ) : (
+                  <p>Loading user data...</p>
+                )}
+              </div>
             </Col>
           </Row>
         </Container>
-        <Container>
-          <Row>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=2" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=3" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=4" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=5" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=6" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=7" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=8" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=9" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=10" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=11" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=12" /></Col>
-            <Col xs={4} sm={3}><img class="imagenes-perfil" src="https://picsum.photos/200/300?random=13" /></Col>
-          </Row>
-        </Container>
+        <div className="imagenes-container">
+          {[...Array(12)].map((_, index) => (
+            <div key={index} className="imagen-item">
+              <img
+                className="imagenes-perfil"
+                src={`https://picsum.photos/200/300?random=${index + 2}`}
+                alt={`Image ${index}`}
+                onClick={() => setImagenSeleccionada(`https://picsum.photos/200/300?random=${index + 2}`)}
+              />
+            </div>
+          ))}
+          {imagenSeleccionada && (
+            <div className="imagen-grande-overlay" onClick={() => setImagenSeleccionada(null)}>
+              <img src={imagenSeleccionada} alt="Imagen grande" className="imagen-grande" />
+            </div>
+          )}
+        </div>
       </Container>
-    );
+    </div>
+  );
 }
+
 
 export default Homepage;
