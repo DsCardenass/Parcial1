@@ -28,6 +28,18 @@
   color: #61dafb;
 }
 
+.imagen-perfil{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.imagenes-perfil{
+  width: 350px;
+  height: 350px;
+  margin-left: 10px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
