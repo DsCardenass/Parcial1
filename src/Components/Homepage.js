@@ -3,8 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import userData from './userData.json';
+import { Link } from 'react-router-dom';
 
-function Homepage() {
+function Homepage(props) {
   const [uData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -19,7 +20,14 @@ function Homepage() {
         <Container style={{ marginBottom: '24px' }}>
           <Row className="align-items-center">
             <Col xs="auto">
-              <img className="imagen-perfil" src="https://picsum.photos/200/300?random=1" alt="Profile" />
+              <Link to="/profile">
+                <img
+                  className="imagen-perfil"
+                  src="https://picsum.photos/350/350?random=1"
+                  alt="Profile"
+                  style={{ cursor: 'pointer' }}
+                />
+              </Link>
             </Col>
             <Col>
               <div>
@@ -43,9 +51,9 @@ function Homepage() {
             <div key={index} className="imagen-item">
               <img
                 className="imagenes-perfil"
-                src={`https://picsum.photos/200/300?random=${index + 2}`}
+                src={`https://picsum.photos/1280/720?random=${index + 2}`}
                 alt={`Image ${index}`}
-                onClick={() => setImagenSeleccionada(`https://picsum.photos/200/300?random=${index + 2}`)}
+                onClick={() => setImagenSeleccionada(`https://picsum.photos/1280/720?random=${index + 2}`)}
               />
             </div>
           ))}
