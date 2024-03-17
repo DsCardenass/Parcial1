@@ -24,11 +24,6 @@
   gap: 20px; 
 }
 
-.imagenes-perfil {
-  width: 350px;
-  height: 350px;
-}
-
 .imagen-grande-overlay {
   position: fixed;
   top: 0;

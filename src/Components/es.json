@@ -1,0 +1,17 @@
+{
+    "usernameLabel":"Nombre de usuario:",
+    "fullNameLabel":"Nombre completo:",
+    "descriptionLabel":"Descripción del perfil:",
+    "urlLabel":"URL página personal:",
+    "usernamePlaceholder":"Username",
+    "fullNamePlaceholder":"Nombre completo",
+    "descriptionPlaceholder":"Descripción del perfil",
+    "urlPlaceholder":"URL página personal",
+    "saveChangesButton":"Guardar Cambios",
+    "backButton":"Volver",
+    "completeFields":"Complete todos los campos",
+    "savedChanges":"Cambios guardados",
+    "post":"PUBLICACIONES",
+    "followers":"SEGUIDORES",
+    "following":"SIGUIENDO"
+  }

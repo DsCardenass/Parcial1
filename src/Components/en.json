@@ -1,0 +1,18 @@
+{
+      "usernameLabel": "Username:",
+      "fullNameLabel": "Full Name:",
+      "descriptionLabel": "Profile Description:",
+      "urlLabel": "Personal Page URL:",
+      "usernamePlaceholder": "Username",
+      "fullNamePlaceholder": "Full Name",
+      "descriptionPlaceholder": "Profile Description",
+      "urlPlaceholder": "Personal Page URL",
+      "saveChangesButton": "Save Changes",
+      "backButton": "Back",
+      "completeFields": "Complete all fields",
+      "savedChanges": "Changes saved",
+      "post":"POSTS",
+      "followers":"FOLLOWERS",
+      "following":"FOLLOWING"
+}
+  

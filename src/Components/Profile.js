@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import datos from './userData.json';
+import { FormattedMessage, useIntl } from 'react-intl';
 import { Link } from 'react-router-dom';
+import datos from './userData.json';
 
 function Profile() {
+  const intl = useIntl();
   const [usuario, setUsuario] = useState('');
   const [nombre, setNombre] = useState('');
   const [descripcion, setDescripcion] = useState('');
@@ -13,7 +15,7 @@ function Profile() {
     e.preventDefault();
 
     if (!usuario || !nombre || !descripcion || !url) {
-      setError('Complete todos los campos');
+      setError(intl.formatMessage({ id: "completeFields" }));
       return;
     }
 
@@ -21,7 +23,7 @@ function Profile() {
     datos[0].fullName = nombre;
     datos[0].description = descripcion;
     datos[0].url = url;
-    setError('Cambios guardados');
+    setError(intl.formatMessage({ id: "savedChanges" }));
   };
 
   return (
@@ -35,52 +37,51 @@ function Profile() {
         />
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Nombre de usuario:</label>
+            <label><FormattedMessage id="usernameLabel" /></label>
             <br />
             <input
               type="text"
               value={usuario}
               onChange={(e) => setUsuario(e.target.value)}
-              placeholder="Username"
+              placeholder={intl.formatMessage({ id: "usernamePlaceholder" })}
             />
           </div>
           <div className="form-group">
-            <label>Nombre completo:</label>
+            <label><FormattedMessage id="fullNameLabel" /></label>
             <br />
             <input
               type="text"
               value={nombre}
               onChange={(e) => setNombre(e.target.value)}
-              placeholder="Nombre completo"
+              placeholder={intl.formatMessage({ id: "fullNamePlaceholder" })}
             />
           </div>
           <div className="form-group">
-            <label>Descripción del perfil:</label>
+            <label><FormattedMessage id="descriptionLabel" /></label>
             <br />
             <input
               type="text"
               value={descripcion}
               onChange={(e) => setDescripcion(e.target.value)}
-              placeholder="Descripción del perfil"
+              placeholder={intl.formatMessage({ id: "descriptionPlaceholder" })}
             />
           </div>
           <div className="form-group">
-            <label>URL página personal:</label>
+            <label><FormattedMessage id="urlLabel" /></label>
             <br />
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
-              placeholder="URL página personal"
+              placeholder={intl.formatMessage({ id: "urlPlaceholder" })}
             />
           </div>
           <br />
-          <button type="submit" className="submit-button">Guardar Cambios</button>
-          {error && <p className="error-message">{error}</p>
-          }
+          <button type="submit" className="submit-button"><FormattedMessage id="saveChangesButton" /></button>
+          {error && <p className="error-message">{error}</p>}
           <br />
           <Link to="/">
-            <button type="submit" className="submit-button">Volver</button>
+            <button type="submit" className="submit-button"><FormattedMessage id="backButton" /></button>
           </Link>
         </form>
       </div>

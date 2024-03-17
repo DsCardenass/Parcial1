@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import userData from './userData.json';
 import { Link } from 'react-router-dom';
+import { FormattedMessage} from 'react-intl';
 
 function Homepage(props) {
   const [uData, setUserData] = useState(null);
@@ -37,7 +38,7 @@ function Homepage(props) {
                     <p className="mb-0"><strong>{uData[0].fullName}</strong></p>
                     <p className="mb-0">{uData[0].description}</p>
                     <p className="mb-0"><strong>URL:</strong> <a href={uData[0].url}>{uData[0].url}</a></p>
-                    <p className="mb-0"><strong>{uData[0].posts}</strong> POSTS - <strong>{uData[0].followers}</strong> FOLLOWERS - <strong>{uData[0].following}</strong> FOLLOWING</p>
+                    <p className="mb-0"><strong>{uData[0].posts}</strong> <FormattedMessage id="post"/> - <strong>{uData[0].followers}</strong> <FormattedMessage id="followers"/> - <strong>{uData[0].following}</strong> <FormattedMessage id="following"/></p>
                   </div>
                 ) : (
                   <p>Loading user data...</p>
@@ -48,7 +49,7 @@ function Homepage(props) {
         </Container>
         <div className="imagenes-container">
           {[...Array(12)].map((_, index) => (
-            <div key={index} className="imagen-item">
+            <div key={index}>
               <img
                 className="imagenes-perfil"
                 src={`https://picsum.photos/1280/720?random=${index + 2}`}
